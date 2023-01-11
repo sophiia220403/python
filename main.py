@@ -4,17 +4,17 @@ vornamen = ['Axel', 'Elke', 'Martin']
 eingabeName = input("Bitte Namen eingeben \n")
 position = int(input("Bitte Position eingeben \n"))
 
-"""var 1
+#var 1
 if position > 2:
     print("Bitte eine Zahl zwischen 0 und 2 eingeben")
     position = int(input("Bitte Position eingeben \n"))
 
 else:
     vornamen[position] = eingabeName
-    print(vornamen)"""
+    print(vornamen)
 
 """var 2
-if position < len(vornamen): #and position >=0#
+if position < len(vornamen)-1: #and position >=0
     vornamen[position] = eingabeName
     print(vornamen)
 
