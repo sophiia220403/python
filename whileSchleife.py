@@ -17,11 +17,6 @@ print("nach der Schleife")"""
 def epochen():
     Jahr = int(input("Bitte Jahr eingeben \n"))
 
-    if weitermachen == "weiter":
-        print("ok, weiter geht es!")
-        epochen()
-    else:
-        print("ok, tschüss")
 
     if Jahr < 0:
         print("vor Christus")
@@ -44,16 +39,21 @@ def epochen():
     else:
         print("Bitte eine Zahl zwischen 0 und 1600 eingeben!")
 
-durchgang = 0
-aktiv = True
-while aktiv:
-    #print(durchgang)
-    durchgang = durchgang + 1
-    weitermachen = input("soll ich weitermachen? Ja/Nein \n")
-    if weitermachen != "Ja":
-        aktiv = False
-    else:
-        print("ok, tschüss")
-#print("nach der Schleife")
+
+def schleife():
+    aktiv = True
+    while aktiv:
+        epochen()
+        weitermachen = input("soll ich weitermachen? Ja/Nein \n")
+        if weitermachen == "Ja" or weitermachen == "ja":
+            print("")
+        else:
+            aktiv = False
+            print("ok, tschüss")
+
+
+schleife()
+
+
 
 #Zahlenratespiel
