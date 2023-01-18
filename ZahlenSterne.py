@@ -4,10 +4,9 @@ anz = int(input("gimme number \n"))
 for durchgang in range(1, anz + 1):
     print(f"{durchgang}: ", end='')
 
-    for i in range(durchgang):
+    for i in range(0,durchgang):
         print("*", end=" ")
     print()
-
 
 """
 #forLoop()

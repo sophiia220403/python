@@ -8,4 +8,5 @@ while aktiv:
     if counter == (len(vornamen)-1):
         aktiv = False
 
-    print(counter)
+    #print(counter)
+    print(vornamen[counter])
