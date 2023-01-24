@@ -3,6 +3,7 @@ import random
 print("Tic-Tac-Toe Python Tutorial")
 spiel_aktiv = True
 spieler_aktuell = 'X'
+
 # Spielfeld als Liste erstellen
 spielfeld = [" ",
              "1", "2", "3",
@@ -12,9 +13,11 @@ spielfeld = [" ",
 
 # Spielfeld ausgeben
 def spielfeld_ausgeben():
-    print(spielfeld[1] + "|" + spielfeld[2] + "|" + spielfeld[3])
-    print(spielfeld[4] + "|" + spielfeld[5] + "|" + spielfeld[6])
-    print(spielfeld[7] + "|" + spielfeld[8] + "|" + spielfeld[9])
+    print(spielfeld[1] + " | " + spielfeld[2] + " | " + spielfeld[3])
+    print("----------")
+    print(spielfeld[4] + " | " + spielfeld[5] + " | " + spielfeld[6])
+    print("----------")
+    print(spielfeld[7] + " | " + spielfeld[8] + " | " + spielfeld[9])
 
 
 # Spieleingabe und Kontrolle der Eingabe
@@ -83,6 +86,7 @@ def kontrolle_auf_unentschieden():
             and (spielfeld[8] == 'X' or spielfeld[8] == 'O') \
             and (spielfeld[9] == 'X' or spielfeld[9] == 'O'):
         return ('unentschieden')
+    #wenn mehr als eine Zeile \ damit es als eins gelesen wird
 
 
 # aktuelles Spielfeld ausgeben
@@ -106,7 +110,7 @@ while spiel_aktiv:
         spielzug = int(random.choice(spielfeld_KI))
     else:
         spielzug = spieler_eingabe()
-    spielzug = spieler_eingabe()
+    #spielzug = spieler_eingabe()
     if spielzug:
         # spielfeld[spielzug] = 'X'
         spielfeld[spielzug] = spieler_aktuell
