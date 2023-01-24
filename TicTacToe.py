@@ -1,5 +1,5 @@
-board = ["-", "-", "-",
-         "-", "-", "-",
+board = [" ", " ", " ",
+         " ", " ", "-",
          "-", "-", "-"]
 currentPlayer = "X"
 winner = None
@@ -14,7 +14,8 @@ def printBoard(board):
     print(board[3] + " | " + board[4] + " | " + board[5])
     print("---------")
     print(board[6] + " | " + board[7] + " | " + board[8])
-
+printBoard(board)
+"""
 #take player input
 
 def playerInput(board):
@@ -63,3 +64,4 @@ def checkDiagonal(board):
 while gameRunning:
     printBoard(board)
     playerInput(board)
+"""
