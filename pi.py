@@ -10,5 +10,6 @@ for i in range(anzPunkte):
     if x*x + y*y <= 1:
         anzPunkteKreis += 1
 
+
 pi = 4 * anzPunkteKreis / anzPunkte
 print(pi)
