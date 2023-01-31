@@ -13,6 +13,10 @@ SCHWARZ = (0, 0, 0)
 WEISS = (255, 255, 255)
 GRAU = (211, 211, 211)
 
+#Score
+score = 0
+anzKörper = 1
+
 
 #Bildschirm Aktualisierungen einstellen
 clock = pygame.time.Clock()
@@ -40,8 +44,17 @@ snakepos_y = 145
 
 SNAKE_DURCHMESSER = 20
 
-bewegung_x = 4
-bewegung_y = 4
+bewegung_x = 0
+bewegung_y = 0
+
+bewegungsTemp = 2.5
+ApfelBreite = 20
+ApfelHoehe = 20
+Apfel = pygame.image.load("Apfel.png")
+Apfel = pygame.transform.scale(Apfel, (ApfelBreite, ApfelHoehe))
+Apfel_x = random.randint(0 + ApfelBreite + 5, FENSTERBREITE - ApfelBreite - 5)
+Apfel_y = random.randint(0 + ApfelHoehe + 5, FENSTERHOEHE - ApfelHoehe - 5)
+
 
 # Schleife Hauptprogramm
 while spielaktiv:
@@ -53,24 +66,33 @@ while spielaktiv:
         elif event.type == pygame.KEYDOWN:
             print("Spieler hat Taste gedrückt")
 
-            # Taste für Spieler 1
+            # Taste für Spieler
             if event.key == pygame.K_RIGHT:
                 print("Spieler hat Pfeiltaste rechts gedrückt")
+                bewegung_x = 1 * bewegungsTemp
+                bewegung_y = 0 * bewegungsTemp
             elif event.key == pygame.K_LEFT:
                 print("Spieler hat Pfeiltaste links gedrückt")
+                bewegung_x = -1 * bewegungsTemp
+                bewegung_y = 0 * bewegungsTemp
             elif event.key == pygame.K_UP:
                 print("Spieler hat Pfeiltaste hoch gedrückt")
+                bewegung_x = 0 * bewegungsTemp
+                bewegung_y = -1 * bewegungsTemp
             elif event.key == pygame.K_DOWN:
                 print("Spieler hat Pfeiltaste runter gedrückt")
-            elif event.key == pygame.K_SPACE:
-                print("Spieler hat Leertaste gedrückt")
+                bewegung_x = 0 * bewegungsTemp
+                bewegung_y = 1 * bewegungsTemp
 
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            print("Spieler hast Maus angeklickt")
     #print(snake())
 
 
     # Spiellogik hier integrieren
+    if abs(snakepos_x - Apfel_x) < ApfelBreite and abs(snakepos_y - Apfel_y) < ApfelHoehe:
+        Apfel_x = random.randint(0 + ApfelBreite + 5, FENSTERBREITE - ApfelBreite - 5)
+        Apfel_y = random.randint(0 + ApfelHoehe + 5, FENSTERHOEHE - ApfelHoehe - 5)
+        score += 1
+        anzKörper += 1
 
     # Spielfeld löschen
     screen.fill(SCHWARZ)
@@ -80,18 +102,29 @@ while spielaktiv:
     pygame.draw.rect(screen, SCHWARZ, [0, 0, 400, 300], 3)
     pygame.draw.ellipse(screen, GRUEN, [snakepos_x, snakepos_y, 20, 20])
 
+    pygame.Surface.blit(screen, Apfel, (Apfel_x, Apfel_y))
+
     #Bewegung Snake
     snakepos_x += bewegung_x
     snakepos_y += bewegung_y
 
+    #Game Over bei Wand
     if snakepos_y > FENSTERHOEHE - SNAKE_DURCHMESSER or snakepos_y < 0:
-        bewegung_y = bewegung_y * -1
+        spielaktiv = False
 
     if snakepos_x > FENSTERBREITE - SNAKE_DURCHMESSER or snakepos_x < 0:
-        bewegung_x = bewegung_x * -1
+        spielaktiv = False
     #Fenster aktualisieren
     pygame.display.flip()
     # Refresh-Zeiten festlegen
     clock.tick(60)
 
+
+print(score)
 pygame.quit()
+
+"""
+1. Schlange verlängern + aneinander (Liste, jedes Element aus Tripel(x, y, Richtung) 
+2. Highscore (evtl auch abspeichern in extra Datei 
+3. Schlange verschönern + animieren
+4. """
