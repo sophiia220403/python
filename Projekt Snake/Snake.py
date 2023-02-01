@@ -20,8 +20,13 @@ anzKörper = 1
 #Highscore
 Highscore = 0
 
-font = pygame.font.SysFont(None, 24)
+font = pygame.font.SysFont(None, 40)
+font2 = pygame.font.SysFont(None, 30)
 img = font.render(f"Punkte: {score}", True, SCHWARZ)
+agn = font2.render(f"Nochmal?", True, SCHWARZ)
+ext = font2.render(f"Beenden", True, SCHWARZ)
+esc = font.render(f"'esc'", True, SCHWARZ)
+q = font.render(f"'Q'", True, SCHWARZ)
 
 #Bildschirm Aktualisierungen einstellen
 clock = pygame.time.Clock()
@@ -100,6 +105,7 @@ while spielaktiv:
         Apfel_y = random.randint(0 + ApfelHoehe + 5, FENSTERHOEHE - ApfelHoehe - 5)
         score += 1
         anzKörper += 1
+        bewegungsTemp += 0.1
 
     #Highscore erhöhen
     if Highscore < score:
@@ -113,7 +119,7 @@ while spielaktiv:
     pygame.draw.rect(screen, SCHWARZ, [0, 0, 400, 300], 3)
 
     #Rechteck um Schlangenkopf
-    pygame.transform.rotate(rect, 90)
+#!    pygame.transform.rotate(rect, 90)
 
     #Schlangenkopf
     pygame.draw.rect(screen, GRUEN, [snakepos_x, snakepos_y, ApfelBreite, ApfelHoehe])
@@ -129,10 +135,6 @@ while spielaktiv:
     #Zunge
     pygame.draw.rect(screen, ROT, [snakepos_x + 8, snakepos_y - 15, 3, 15])
 
-
-
-
-
     pygame.Surface.blit(screen, Apfel, (Apfel_x, Apfel_y))
 
     #Bewegung Snake
@@ -141,14 +143,23 @@ while spielaktiv:
 
     #Game Over bei Wand
     if snakepos_y > FENSTERHOEHE - SNAKE_DURCHMESSER or snakepos_y < 0:
-        spielaktiv = False
         screen.fill(ROT)
-        screen.blit(img, (160, 140))
+        pygame.draw.rect(screen, SCHWARZ, [0, 0, 400, 300], 3)
+        screen.blit(img, (132, 70))
+        screen.blit(agn, (60, 170))
+        screen.blit(ext, (240, 170))
+        screen.blit(esc, (255, 210))
+        screen.blit(q, (90, 210))
 
     if snakepos_x > FENSTERBREITE - SNAKE_DURCHMESSER or snakepos_x < 0:
-        spielaktiv = False
         screen.fill(ROT)
-        screen.blit(img, (160, 140))
+        pygame.draw.rect(screen, SCHWARZ, [0, 0, 400, 300], 3)
+        screen.blit(img, (132, 70))
+        screen.blit(agn, (60, 170))
+        screen.blit(ext, (240, 170))
+        screen.blit(esc, (255, 210))
+        screen.blit(q, (90, 210))
+
 
     #Fenster aktualisieren
     pygame.display.flip()
@@ -167,3 +178,10 @@ pygame.quit()
 5. End Screen mit Neustart Button -> Spielaktiv = False bei Game Over entfernen!
 6. BLocken, dass Schlange sich nicht um 180 Grad drehen kann
 7. Endscreen mit Punktestand -> Zeigt immer 0 an"""
+
+
+"""
+Probleme:
+1. Endscreen mit Punktestand updatet sich nicht, immer 0
+2. q zum Neustarten funktioniert nicht 
+3. Wie verlängere ich die Schlange?"""
