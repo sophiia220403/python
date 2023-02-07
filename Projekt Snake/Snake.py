@@ -11,6 +11,7 @@ GRUEN = (0, 130, 10)
 SCHWARZ = (0, 0, 0)
 WEISS = (255, 255, 255)
 GRAU = (211, 211, 211)
+BGGRUEN = (73, 182, 117)
 
 
 # Bildschirm Aktualisierungen einstellen
@@ -106,7 +107,7 @@ def game():
         screen.fill(SCHWARZ)
 
         # Spielfeld/figuren zeichnen
-        screen.fill(GRAU)
+        screen.fill(BGGRUEN)
         pygame.draw.rect(screen, SCHWARZ, [0, 0, 400, 300], 3)
 
         #Rechteck um Schlangenkopf
@@ -173,15 +174,12 @@ pygame.quit()
 1. Schlange verlängern + aneinander (Liste, jedes Element aus Tripel(x, y, Richtung) 
 2. Highscore (evtl auch abspeichern in extra Datei)
 3. Schlange verschönern + animieren
-4. Geschwindigkeit Schlange erhöhen, wenn Apfel gefressen. Muss aber bei Neustart in der Software zurückgesetzt werden:
-5. End Screen mit Neustart Button -> Spielaktiv = False bei Game Over entfernen!
 6. BLocken, dass Schlange sich nicht um 180 Grad drehen kann
-7. Endscreen mit Punktestand -> Zeigt immer 0 an"""
+8. Variable die schaut, ob ich in game oder screen bin -> muss mit spielaktiv arbeiten, wenn True = im Game, 
+   wenn False = im Screen"""
 
 
 """
 Probleme:
-1. Endscreen mit Punktestand updatet sich nicht, immer 0
-2. q zum Neustarten funktioniert nicht 
 3. Wie verlängere ich die Schlange?
 4. End Screen kann verlassen werden wenn Snake wieder in Bildshirm"""
