@@ -107,7 +107,8 @@ def game():
         screen.fill(SCHWARZ)
 
         # Spielfeld/figuren zeichnen
-        screen.fill(BGGRUEN)
+        #screen.fill(BGGRUEN)
+        screen.fill(GRAU)
         pygame.draw.rect(screen, SCHWARZ, [0, 0, 400, 300], 3)
 
         #Rechteck um Schlangenkopf
