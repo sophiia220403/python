@@ -32,7 +32,8 @@ def game():
     anzKoerper = 1
 
     #Highscore
-    Highscore = 0
+    datei = open("Highscore", "r", encoding="utf-8")
+    Highscore = int(datei.read())
 
     # solange die Variable True ist, soll das Spiel laufen
     ProgrammAktiv = True
@@ -102,6 +103,9 @@ def game():
         #Highscore erhöhen
         if Highscore < score:
             Highscore = score
+            datei.write(score)
+
+            datei.close()
 
         # Spielfeld löschen
         screen.fill(SCHWARZ)
@@ -177,7 +181,9 @@ pygame.quit()
 3. Schlange verschönern + animieren
 6. BLocken, dass Schlange sich nicht um 180 Grad drehen kann
 8. Variable die schaut, ob ich in game oder screen bin -> muss mit spielaktiv arbeiten, wenn True = im Game, 
-   wenn False = im Screen"""
+   wenn False = im Screen
+9. Spielfeld schön machen mit Kacheln zeichnen
+"""
 
 
 """
